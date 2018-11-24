@@ -63,7 +63,7 @@ public class MyString implements CharSequence, Comparable<CharSequence>{
         }
       }
     }
-    //vice versa
+    //if data is smaller, make it not go further cuz it will throw error
     if(preventerror == 1){
       for (int x = 0; x < data.length; x++){
         if (data[x] > s.charAt(x)) {
