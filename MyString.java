@@ -2,7 +2,7 @@ public class MyString implements CharSequence, Comparable<CharSequence>{
  	private char[] data;
  	public MyString(CharSequence s){
     //makes charsequence into char cuz can't make data into charsequence
-		char[] data = new char[s.length()];
+		data = new char[s.length()];
     for (int x = 0;x < s.length();x++){
       data[x] = s.charAt(x);
     }
@@ -10,14 +10,14 @@ public class MyString implements CharSequence, Comparable<CharSequence>{
 	//Returns a string containing the characters in this sequence in the same order as this sequence.
 	public String toString(){
 		String var = "";
-		for (int x = 0; x < data.length; x++){
+		for (int x = 0; x < length(); x++){
 			var += data[x];
 		}
 		return var;
 	}
 	//Returns the char value at the specified index.
 	public char charAt(int index){
-		if (index < 0 || index >= data.length){
+		if (index < 0 || index >= length()){
 			throw new IndexOutOfBoundsException("out of range");
 		}
 		return data[index];
@@ -28,7 +28,7 @@ public class MyString implements CharSequence, Comparable<CharSequence>{
 	}
 	//Returns a CharSequence that is a subsequence of this sequence.
 	public CharSequence subSequence(int start, int end){
-		if (start < 0 || end < 0 || end > data.length){
+		if (start < 0 || end < 0 || end > length()){
 			throw new IndexOutOfBoundsException("out of range");
     }
     String val = "";
@@ -54,22 +54,22 @@ public class MyString implements CharSequence, Comparable<CharSequence>{
     //bigger or smaller
     if (preventerror == -1){
       //if s is smaller, make it not go further cuz it will throw error
-      for (int x = 0; x < s.length(); x++){
+      for (int x = 0; x < length(); x++){
         if (data[x] > s.charAt(x)) {
           return 1;
         }
-        if (data[x] > s.charAt(x)){
+        if (data[x] < s.charAt(x)){
           return -1;
         }
       }
     }
     //if data is smaller, make it not go further cuz it will throw error
-    if(preventerror == 1){
-      for (int x = 0; x < data.length; x++){
+    else{
+      for (int x = 0; x < s.length(); x++){
         if (data[x] > s.charAt(x)) {
           return 1;
         }
-        if (data[x] > s.charAt(x)){
+        if (data[x] < s.charAt(x)){
           return -1;
         }
       }
